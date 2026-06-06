@@ -34,10 +34,9 @@
             min-height: 100vh;
         }
 
-        /* 🎛️ Əsas Dashboard Strukturu */
         .dashboard {
             display: flex;
-            width: 95% ;
+            width: 95%;
             max-width: 1050px;
             height: 650px;
             background: var(--card-bg);
@@ -47,12 +46,12 @@
             overflow: hidden;
         }
 
-        /* 👤 Sol Hissə: Sabit Profil Paneli (Stabilliyi Qoruyan Hissə) */
+        /* 👤 Sidebar */
         .sidebar {
             width: 32%;
             background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
             border-right: 1px solid var(--border-color);
-            padding: 40px 30px;
+            padding: 40px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -60,32 +59,23 @@
             justify-content: space-between;
         }
 
-        .profile-info img {
-            width: 110px;
-            height: 110px;
+        /* 📸 Şəkil Bölməsi (Büst şəklində mərkəzlənmiş) */
+        .avatar-container {
+            width: 115px;
+            height: 115px;
+            margin: 0 auto 20px auto;
             border-radius: 50%;
-            background: var(--accent-light);
             border: 4px solid var(--card-bg);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            object-fit: cover;
-            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            overflow: hidden;
+            background: var(--accent-light);
         }
 
-        /* Əgər şəklin yoxdursa bura üçün zərif avatar placeholder */
-        .avatar-placeholder {
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
-            background: var(--accent-light);
-            color: var(--accent-color);
-            font-size: 2.5rem;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px auto;
-            border: 4px solid var(--card-bg);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 15%; /* Şəkli büst formatında, üz hissəsini tam mərkəzə gətirir */
         }
 
         .sidebar h1 {
@@ -99,10 +89,9 @@
             color: var(--accent-color);
             font-size: 1rem;
             font-weight: 600;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
-        /* 📌 Sol tərəfdəki Menyu Düymələri */
         .nav-menu {
             width: 100%;
             display: flex;
@@ -137,25 +126,70 @@
             box-shadow: 0 4px 12px rgba(2, 132, 199, 0.15);
         }
 
+        /* 🌐 Sosial Bölmə */
         .sidebar-footer {
-            font-size: 0.8rem;
-            color: var(--text-muted);
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
         }
 
-        /* 📄 Sağ Hissə: Dinamik Dəyişən Məzmun Sahəsi */
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icon {
+            color: var(--text-muted);
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-icon:hover {
+            color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .social-icon svg {
+            width: 100%;
+            height: 100%;
+            fill: currentColor;
+        }
+
+        /* 📄 Sağ Məzmun Sahəsi */
         .content-area {
             width: 68%;
             padding: 50px;
-            overflow-y: auto; /* İçindəki mətn çox olsa rahat scroll olsun */
+            overflow-y: auto;
             background: var(--card-bg);
             position: relative;
         }
 
-        /* 🎭 Tabların Gizlənib Açılması və Animasiyası */
+        /* 🌀 Boşluğu Dolduran Geometrik Fiqur (Watermark) */
+        .tab-content::after {
+            content: "";
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            width: 130px;
+            height: 130px;
+            opacity: 0.06;
+            pointer-events: none;
+            background-image: radial-gradient(var(--text-main) 2px, transparent 2px);
+            background-size: 15px 15px;
+            mask-image: linear-gradient(to top left, rgba(0,0,0,1), transparent);
+            -webkit-mask-image: linear-gradient(to top left, rgba(0,0,0,1), transparent);
+        }
+
         .tab-content {
             display: none;
             opacity: 0;
             transform: translateY(15px);
+            height: 100%;
         }
 
         .tab-content.active {
@@ -176,11 +210,17 @@
             margin-bottom: 20px;
             padding-bottom: 10px;
             border-bottom: 2px solid var(--bg-color);
+            position: relative;
+            z-index: 2;
+        }
+
+        .tab-content p, .tab-content div {
+            position: relative;
+            z-index: 2;
         }
 
         p { line-height: 1.7; color: var(--text-muted); font-size: 1.05rem; }
 
-        /* 🗂️ Skills & Badges */
         .tech-stack {
             display: flex;
             flex-wrap: wrap;
@@ -202,7 +242,6 @@
             box-shadow: 0 4px 8px rgba(2, 132, 199, 0.1);
         }
 
-        /* 🚀 Projects */
         .project-item, .exp-item {
             margin-bottom: 25px;
             padding: 20px;
@@ -240,7 +279,6 @@
 
         .exp-role { color: var(--accent-color); font-weight: 600; }
 
-        /* 📱 Mobil üçün Tam Uyğunlaşdırma */
         @media (max-width: 850px) {
             body { padding: 20px; }
             .dashboard { flex-direction: column; height: auto; }
@@ -248,6 +286,7 @@
             .content-area { width: 100%; padding: 30px 20px; }
             .nav-menu { flex-direction: row; flex-wrap: wrap; justify-content: center; }
             .nav-btn { width: auto; padding: 8px 14px; font-size: 0.85rem; }
+            .tab-content::after { display: none; }
         }
     </style>
 </head>
@@ -256,7 +295,9 @@
 <div class="dashboard">
     <aside class="sidebar">
         <div class="profile-info" style="width: 100%;">
-            <div class="avatar-placeholder">A</div>
+            <div class="avatar-container">
+                <img class="avatar-img" src="profile.png" alt="Ali Yahyayev">
+            </div>
             <h1>Ali Yahyayev</h1>
             <p class="subtitle">.NET Backend Developer</p>
         </div>
@@ -269,6 +310,17 @@
         </div>
 
         <div class="sidebar-footer">
+            <div class="social-links">
+                <a class="social-icon" href="https://github.com/aliyahyayev" target="_blank" title="GitHub">
+                    <svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.1.39-1.99 1.03-2.69-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+                </a>
+                <a class="social-icon" href="https://www.linkedin.com/in/ali-yahyayev-15aa102b1" target="_blank" title="LinkedIn">
+                    <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+                <a class="social-icon" href="https://www.instagram.com/justexistbroo/" target="_blank" title="Instagram">
+                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                </a>
+            </div>
             <p style="font-size: 0.8rem; margin: 0;">© 2026 • aliyahyayev.dev</p>
         </div>
     </aside>
@@ -278,16 +330,16 @@
         <div id="about" class="tab-content active">
             <h2>About Me</h2>
             <p>
-                Computer Science graduate focused on server-side engineering. I specialize in building clean, fast, and scalable web applications and RESTful APIs, with a strong emphasis on the .NET ecosystem and modern software design principles.
+                Computer Science graduate from the <strong>Academy of Public Administration</strong>, deeply focused on server-side engineering. 
             </p>
             <p>
-                I thrive on optimizing relational database structures, designing seamless backend logic, and containerizing applications for stable deployments.
+                I specialize in building clean, fast, and scalable web applications and RESTful APIs, with a strong emphasis on the .NET ecosystem and modern software design principles. I thrive on optimizing database structures and developing robust logic.
             </p>
         </div>
 
         <div id="tech-stack" class="tab-content">
             <h2>Core Tech Stack</h2>
-            <p>These are the core technologies I work with deeply on a daily basis to build enterprise backend systems:</p>
+            <p>These are the core technologies I work with deeply to build stable and high-performance backend systems:</p>
             <div class="tech-stack">
                 <span class="badge">C# Programming</span>
                 <span class="badge">.NET Core / 8+</span>
@@ -344,19 +396,16 @@
 
 <script>
     function openTab(evt, tabName) {
-        // Bütün tab məzmunlarını gizlət
         const tabContents = document.getElementsByClassName("tab-content");
         for (let i = 0; i < tabContents.length; i++) {
             tabContents[i].classList.remove("active");
         }
 
-        // Bütün menyu düymələrinin aktivliyini sil edin
         const navButtons = document.getElementsByClassName("nav-btn");
         for (let i = 0; i < navButtons.length; i++) {
             navButtons[i].classList.remove("active");
         }
 
-        // Kliklənən tabı və düyməni aktivləşdir
         document.getElementById(tabName).classList.add("active");
         evt.currentTarget.classList.add("active");
     }
