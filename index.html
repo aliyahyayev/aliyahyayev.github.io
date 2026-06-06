@@ -12,6 +12,7 @@
             --text-main: #ffffff;
             --accent-color: #38bdf8;
             --border-color: #334155;
+            --project-badge: #475569;
         }
         body {
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
@@ -71,23 +72,36 @@
             font-family: monospace;
             border: 1px solid var(--border-color);
         }
+        .project-badge {
+            background: var(--project-badge);
+            color: #fff;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-family: monospace;
+            margin-right: 5px;
+            display: inline-block;
+        }
         .project-item, .exp-item {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         .project-item:last-child, .exp-item:last-child { margin-bottom: 0; }
         .project-title {
             color: var(--text-main);
             font-weight: bold;
             font-size: 1.1rem;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
         }
-        .project-links a {
-            color: var(--accent-color);
-            text-decoration: none;
-            font-size: 0.9rem;
-            margin-right: 15px;
+        .p-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
         }
-        .project-links a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
@@ -96,48 +110,73 @@
     <header>
         <h1>Ali Yahyayev</h1>
         <p class="subtitle">Backend Developer</p>
-        <p style="max-width: 600px; margin: 15px auto 0 auto;">
-            Building scalable RESTful APIs, optimizing database performance, and designing clean software architectures. Focused heavily on the .NET ecosystem and modern backend practices.
-        </p>
     </header>
 
     <section id="about">
         <h2>About Me</h2>
         <p>
-            I am a Computer Science graduate from the Academy of Public Administration. My passion lies in server-side engineering, database management, and building robust backend systems. I thrive on solving complex algorithmic problems and continuous learning.
+            Computer Science graduate focused on server-side engineering. I specialize in building clean, fast, and scalable web applications and RESTful APIs, with a strong emphasis on the .NET ecosystem and modern software design principles.
         </p>
     </section>
 
     <section id="tech-stack">
-        <h2>Technical Stack</h2>
+        <h2>Core Tech Stack</h2>
         <div class="tech-stack">
-            <span class="badge">C# (.NET Core)</span>
-            <span class="badge">Go (Golang)</span>
-            <span class="badge">Python</span>
+            <span class="badge">C#</span>
+            <span class="badge">.NET Core</span>
+            <span class="badge">ASP.NET MVC / Web API</span>
             <span class="badge">Entity Framework Core</span>
-            <span class="badge">PostgreSQL</span>
             <span class="badge">Microsoft SQL Server</span>
+            <span class="badge">SQLite</span>
             <span class="badge">Docker</span>
-            <span class="badge">REST APIs</span>
         </div>
     </section>
 
     <section id="projects">
-        <h2>Featured Projects</h2>
+        <h2>Projects & Tech Experience</h2>
         
         <div class="project-item">
-            <div class="project-title">🚀 TaskFlow API</div>
-            <p>A robust task management API developed using Go (Golang) and PostgreSQL. Features efficient endpoint routing, database migrations, and clean architectural design.</p>
+            <div class="project-title">
+                <span>🚀 TaskFlow API</span>
+                <div class="p-tags">
+                    <span class="project-badge">Go (Golang)</span>
+                    <span class="project-badge">PostgreSQL</span>
+                </div>
+            </div>
+            <p>A robust task management API featuring efficient endpoint routing, database migrations, and clean architectural design.</p>
         </div>
 
         <div class="project-item">
-            <div class="project-title">🛒 Market System & Bulky MVC</div>
-            <p>Comprehensive enterprise-level e-commerce and inventory platforms built with C#, ASP.NET MVC, and Entity Framework Core, optimizing relational data handling.</p>
+            <div class="project-title">
+                <span>🛒 Market System & Bulky MVC</span>
+                <div class="p-tags">
+                    <span class="project-badge">C#</span>
+                    <span class="project-badge">ASP.NET MVC</span>
+                    <span class="project-badge">EF Core</span>
+                </div>
+            </div>
+            <p>Comprehensive platforms built to optimize relational data handling, inventory management, and e-commerce workflows.</p>
         </div>
 
         <div class="project-item">
-            <div class="project-title">💬 Real-Time Chat & URL Shortener</div>
-            <p>High-performance backend systems utilizing .NET technologies for instantaneous data synchronization and URL optimization, fully containerized via Docker.</p>
+            <div class="project-title">
+                <span>💬 Real-Time Chat & URL Shortener</span>
+                <div class="p-tags">
+                    <span class="project-badge">.NET Core</span>
+                    <span class="project-badge">Docker</span>
+                </div>
+            </div>
+            <p>High-performance backend systems utilizing .NET technologies for instantaneous data synchronization and URL optimization.</p>
+        </div>
+
+        <div class="project-item">
+            <div class="project-title">
+                <span>📊 Sentiment Analysis Script</span>
+                <div class="p-tags">
+                    <span class="project-badge">Python</span>
+                </div>
+            </div>
+            <p>Data analytics script designed for processing and evaluating sentiment patterns within social media commentary.</p>
         </div>
     </section>
 
