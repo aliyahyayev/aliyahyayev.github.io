@@ -59,23 +59,8 @@
             justify-content: space-between;
         }
 
-        /* 📸 Şəkil Bölməsi */
-        .avatar-container {
-            width: 115px;
-            height: 115px;
-            margin: 0 auto 20px auto;
-            border-radius: 50%;
-            border: 4px solid var(--card-bg);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            overflow: hidden;
-            background: var(--accent-light);
-        }
-
-        .avatar-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center 15%;
+        .profile-info {
+            padding-top: 20px;
         }
 
         .sidebar h1 {
@@ -169,23 +154,22 @@
             position: relative;
         }
 
-        /* 🌀 🛠️ GÜCLƏNDİRİLMİŞ GEOMETRİK FİQUR (WATERMARK) */
+        /* 🌀 🛠️ GÜCLƏNDİRİLMİŞ, BÖYÜDÜLMÜŞ VƏ DAHA RƏNGLİ GEOMETRİK FİQUR */
         .tab-content::after {
             content: "";
             position: absolute;
-            bottom: 20px;
-            right: 20px;
-            width: 150px;
-            height: 150px;
-            opacity: 0.15; /* Görünürlük artırıldı */
+            bottom: -10px;
+            right: -10px;
+            width: 260px;
+            height: 260px;
+            opacity: 0.22;
             pointer-events: none;
-            /* Professional Şəbəkə + Kəsişən Xətlər Dizaynı */
             background-image: 
-                radial-gradient(var(--accent-color) 1.5px, transparent 1.5px),
-                linear-gradient(45deg, transparent 48%, var(--accent-color) 50%, transparent 52%);
-            background-size: 16px 16px, 150px 150px;
-            mask-image: linear-gradient(to top left, rgba(0,0,0,1) 20%, transparent 80%);
-            -webkit-mask-image: linear-gradient(to top left, rgba(0,0,0,1) 20%, transparent 80%);
+                radial-gradient(var(--accent-color) 2px, transparent 2px),
+                linear-gradient(45deg, transparent 46%, var(--accent-color) 49%, var(--accent-color) 51%, transparent 54%);
+            background-size: 20px 20px, 260px 260px;
+            mask-image: linear-gradient(to top left, rgba(0,0,0,1) 30%, transparent 90%);
+            -webkit-mask-image: linear-gradient(to top left, rgba(0,0,0,1) 30%, transparent 90%);
         }
 
         .tab-content {
@@ -245,6 +229,27 @@
             box-shadow: 0 4px 8px rgba(2, 132, 199, 0.1);
         }
 
+        /* 🚀 PROYEKTLƏR ÜÇÜN DAXİLİ SÜRÜŞDÜRMƏ PANELİ (SCOPE) */
+        .projects-container {
+            max-height: 400px;
+            overflow-y: auto;
+            padding-right: 8px;
+        }
+
+        /* Skrol çubuğunun dizaynı */
+        .projects-container::-webkit-scrollbar {
+            width: 6px;
+        }
+        .projects-container::-webkit-scrollbar-track {
+            background: var(--bg-color);
+            border-radius: 10px;
+        }
+        .projects-container::-webkit-scrollbar-thumb {
+            background: var(--text-muted);
+            border-radius: 10px;
+            opacity: 0.5;
+        }
+
         .project-item, .exp-item {
             margin-bottom: 25px;
             padding: 20px;
@@ -290,6 +295,7 @@
             .nav-menu { flex-direction: row; flex-wrap: wrap; justify-content: center; }
             .nav-btn { width: auto; padding: 8px 14px; font-size: 0.85rem; }
             .tab-content::after { display: none; }
+            .projects-container { max-height: none; }
         }
     </style>
 </head>
@@ -298,9 +304,6 @@
 <div class="dashboard">
     <aside class="sidebar">
         <div class="profile-info" style="width: 100%;">
-            <div class="avatar-container">
-                <img class="avatar-img" src="profile.png" alt="Ali Yahyayev">
-            </div>
             <h1>Ali Yahyayev</h1>
             <p class="subtitle">.NET Backend Developer</p>
         </div>
@@ -333,7 +336,7 @@
         <div id="about" class="tab-content active">
             <h2>About Me</h2>
             <p>
-                Computer Science graduate from the <strong>Academy of Public Administration</strong>, deeply focused on server-side engineering. 
+                Computer Science graduate from the Academy of Public Administration, deeply focused on server-side engineering. 
             </p>
             <p>
                 I specialize in building clean, fast, and scalable web applications and RESTful APIs, with a strong emphasis on the .NET ecosystem and modern software design principles. I thrive on optimizing database structures and developing robust logic.
@@ -358,28 +361,30 @@
         <div id="projects" class="tab-content">
             <h2>Projects & Tech Experience</h2>
             
-            <div class="project-item">
-                <div class="project-title">
-                    <span>🚀 TaskFlow API</span>
-                    <span class="project-badge">Go / PostgreSQL</span>
+            <div class="projects-container">
+                <div class="project-item">
+                    <div class="project-title">
+                        <span>🚀 TaskFlow API</span>
+                        <span class="project-badge">Go / PostgreSQL</span>
+                    </div>
+                    <p>A robust task management API featuring efficient endpoint routing, database migrations, and clean architectural design.</p>
                 </div>
-                <p>A robust task management API featuring efficient endpoint routing, database migrations, and clean architectural design.</p>
-            </div>
 
-            <div class="project-item">
-                <div class="project-title">
-                    <span>🛒 Market System & Bulky MVC</span>
-                    <span class="project-badge">C# / ASP.NET / EF Core</span>
+                <div class="project-item">
+                    <div class="project-title">
+                        <span>🛒 Market System & Bulky MVC</span>
+                        <span class="project-badge">C# / ASP.NET / EF Core</span>
+                    </div>
+                    <p>Comprehensive platforms built to optimize relational data handling, inventory management, and e-commerce workflows.</p>
                 </div>
-                <p>Comprehensive platforms built to optimize relational data handling, inventory management, and e-commerce workflows.</p>
-            </div>
 
-            <div class="project-item">
-                <div class="project-title">
-                    <span>💬 Real-Time Chat & URL Shortener</span>
-                    <span class="project-badge">.NET Core / Docker</span>
+                <div class="project-item">
+                    <div class="project-title">
+                        <span>💬 Real-Time Chat & URL Shortener</span>
+                        <span class="project-badge">.NET Core / Docker</span>
+                    </div>
+                    <p>High-performance backend systems utilizing .NET technologies for instantaneous data synchronization and URL optimization.</p>
                 </div>
-                <p>High-performance backend systems utilizing .NET technologies for instantaneous data synchronization and URL optimization.</p>
             </div>
         </div>
 
